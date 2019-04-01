@@ -9,23 +9,46 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{2A3C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QuestionsManagement", "QuestionsManagement", "{6FE440F9-5C4D-45C7-9D3F-19E02AD879F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestionsManagement.Data", "src\Backend\Libraries\QuestionsManagement\QuestionsManagement.Data\QuestionsManagement.Data.csproj", "{70B5EDC9-D034-4AD2-AF77-074B5F17C4D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuestionsManagement.Data", "src\Backend\Libraries\QuestionsManagement\QuestionsManagement.Data\QuestionsManagement.Data.csproj", "{70B5EDC9-D034-4AD2-AF77-074B5F17C4D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestionsManagement.Core", "src\Backend\Libraries\QuestionsManagement\QuestionsManagement.Core\QuestionsManagement.Core.csproj", "{61A3C3F3-EF03-4145-8C61-7A0C5FFA4482}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuestionsManagement.Core", "src\Backend\Libraries\QuestionsManagement\QuestionsManagement.Core\QuestionsManagement.Core.csproj", "{61A3C3F3-EF03-4145-8C61-7A0C5FFA4482}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{85993EBA-9719-4AA2-900A-7A2232971C14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Data.EfMigrationContext", "src\Backend\Libraries\Infrastructure\Infrastructure.Data.EfMigrationContext\Infrastructure.Data.EfMigrationContext.csproj", "{CB606FE4-9999-4EC0-9BC5-91EE203C895C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data.EfMigrationContext", "src\Backend\Libraries\Infrastructure\Infrastructure.Data.EfMigrationContext\Infrastructure.Data.EfMigrationContext.csproj", "{CB606FE4-9999-4EC0-9BC5-91EE203C895C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharedKernel", "SharedKernel", "{3106704A-49EF-4630-8CCE-740E6A8782F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterviewMe.SharedKernel", "src\Backend\Libraries\SharedKernel\InterviewMe.SharedKernel\InterviewMe.SharedKernel.csproj", "{B11466C5-0038-49FF-86F0-4E10C98FCD6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterviewMe.SharedKernel", "src\Backend\Libraries\SharedKernel\InterviewMe.SharedKernel\InterviewMe.SharedKernel.csproj", "{B11466C5-0038-49FF-86F0-4E10C98FCD6B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{E94DCA69-F1C6-4518-975F-695EA1C150FE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{E5E3BFFF-F50D-4744-B7D6-D80B8DE7DA78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterviewMe.WebApi", "src\Backend\Presentation\InterviewMe.WebApi\InterviewMe.WebApi.csproj", "{723BF644-72E1-4C23-865D-FE0ECADA19FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterviewMe.WebApi", "src\Backend\Presentation\InterviewMe.WebApi\InterviewMe.WebApi.csproj", "{723BF644-72E1-4C23-865D-FE0ECADA19FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{EB41C504-79EE-48F0-BD00-600BBC022055}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "interview-me-web", "src\Frontend\Web\interview-me-web\", "{C1CAC0BB-2A99-493E-B794-30BAAC61CBA5}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_47398"
+		Debug.AspNetCompiler.PhysicalPath = "src\Frontend\Web\interview-me-web\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_47398\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_47398"
+		Release.AspNetCompiler.PhysicalPath = "src\Frontend\Web\interview-me-web\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_47398\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "47398"
+		SlnRelativePath = "src\Frontend\Web\interview-me-web\"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +76,10 @@ Global
 		{723BF644-72E1-4C23-865D-FE0ECADA19FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{723BF644-72E1-4C23-865D-FE0ECADA19FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{723BF644-72E1-4C23-865D-FE0ECADA19FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1CAC0BB-2A99-493E-B794-30BAAC61CBA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1CAC0BB-2A99-493E-B794-30BAAC61CBA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1CAC0BB-2A99-493E-B794-30BAAC61CBA5}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1CAC0BB-2A99-493E-B794-30BAAC61CBA5}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +95,8 @@ Global
 		{B11466C5-0038-49FF-86F0-4E10C98FCD6B} = {3106704A-49EF-4630-8CCE-740E6A8782F2}
 		{E5E3BFFF-F50D-4744-B7D6-D80B8DE7DA78} = {2A3CC782-CD4B-4FCD-AB20-3645805FC5ED}
 		{723BF644-72E1-4C23-865D-FE0ECADA19FC} = {E5E3BFFF-F50D-4744-B7D6-D80B8DE7DA78}
+		{EB41C504-79EE-48F0-BD00-600BBC022055} = {E94DCA69-F1C6-4518-975F-695EA1C150FE}
+		{C1CAC0BB-2A99-493E-B794-30BAAC61CBA5} = {EB41C504-79EE-48F0-BD00-600BBC022055}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DED34550-5D8E-4602-8622-FFD2BBBAE951}

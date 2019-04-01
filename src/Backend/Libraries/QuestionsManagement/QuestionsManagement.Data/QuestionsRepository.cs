@@ -2,6 +2,7 @@
 using QuestionsManagement.Core.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace QuestionsManagement.Data
@@ -19,6 +20,11 @@ namespace QuestionsManagement.Data
         {
             _questionsContext.Questions.Add(question);
             _questionsContext.SaveChanges();
+        }
+
+        public IEnumerable<Question> GetQuestions()
+        {
+            return _questionsContext.Questions.ToList();
         }
     }
 }

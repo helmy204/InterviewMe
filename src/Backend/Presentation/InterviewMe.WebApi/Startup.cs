@@ -49,6 +49,12 @@ namespace InterviewMe.WebApi
             }
 
             app.UseHttpsRedirection();
+
+            AutoMapper.Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<QuestionsManagement.Core.Model.Question, Models.QuestionModel>();
+            });
+
             app.UseMvc(config =>
             {
                 config.MapRoute("MainAPIRoute", "api/{controller}/{action}");

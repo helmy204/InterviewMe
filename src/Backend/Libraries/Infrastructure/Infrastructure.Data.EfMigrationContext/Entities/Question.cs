@@ -1,4 +1,6 @@
-﻿namespace Infrastructure.Data.EfMigrationContext
+﻿using InterviewMe.SharedKernel;
+
+namespace Infrastructure.Data.EfMigrationContext
 {
     public class Question : AuditableEntity<int>
     {

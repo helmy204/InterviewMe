@@ -1,12 +1,10 @@
 ﻿using InterviewMe.SharedKernel;
+using InterviewMe.SharedKernel.Interfaces;
 using QuestionsManagement.Core.Events;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace QuestionsManagement.Core.Model
 {
-    public class Question
+    public class Question:AuditableEntity<int>
     {
         public static void CreateQuestion(string title, string bodyText)
         {

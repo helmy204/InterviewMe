@@ -1,9 +1,6 @@
 ﻿using InterviewMe.SharedKernel.Interfaces;
 using QuestionsManagement.Core.Events;
 using QuestionsManagement.Core.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace QuestionsManagement.Core.Services
 {
@@ -13,6 +10,7 @@ namespace QuestionsManagement.Core.Services
 
         public QuestionCreatedHandler(IQuestionsRepository questionsRepository)
         {
+
             _questionsRepository = questionsRepository;
         }
 

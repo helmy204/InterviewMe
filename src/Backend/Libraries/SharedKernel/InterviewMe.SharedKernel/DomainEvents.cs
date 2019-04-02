@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace InterviewMe.SharedKernel
 {
-    public static class DomainEvents
+    public  class DomainEvents
     {
         private static List<Type> staticEventHandlers;
         private static List<Type> staticCommitedEventHandlers;
@@ -20,17 +20,34 @@ namespace InterviewMe.SharedKernel
         [ThreadStatic] //each thread has its own callbacks
         private static Queue<IDomainEvent> commitedEvents;
 
+        private static IServiceProvider _serviceProvider;
+
         static DomainEvents()
         {
-            var types = Assembly.GetExecutingAssembly().GetTypes();
+            _serviceProvider = ContainerManager.Container;
 
-            staticEventHandlers = types
-                .Where(x => x.GetInterfaces().Any(y => y.IsGenericType && y.GetGenericTypeDefinition() == typeof(IDomainEventHandler<>)))
-                .ToList();
+            IEnumerable<Assembly> assemblies = AppDomain.CurrentDomain
+                .GetAssemblies()
+                .Where(x => !x.FullName.StartsWith("System.") &&
+                !x.FullName.StartsWith("Microsoft."));
+            staticEventHandlers = new List<Type>();
+            staticCommitedEventHandlers = new List<Type>();
+            foreach (var assembly in assemblies)
+            {
+                var types = assembly.GetTypes();
 
-            staticCommitedEventHandlers = types
-                .Where(x => x.GetInterfaces().Any(y => y.IsGenericType && y.GetGenericTypeDefinition() == typeof(ICommitedDomainEventHandler<>)))
-                .ToList();
+                staticEventHandlers.AddRange(types
+                    .Where(x => x.GetInterfaces()
+                    .Any(y => y.IsGenericType && y.GetGenericTypeDefinition() == typeof(IDomainEventHandler<>))));
+
+                staticCommitedEventHandlers.AddRange(types
+                    .Where(x => x.GetInterfaces()
+                    .Any(y => y.IsGenericType && y.GetGenericTypeDefinition() == typeof(ICommitedDomainEventHandler<>))));
+            }
+
+            //staticCommitedEventHandlers = types
+            //    .Where(x => x.GetInterfaces().Any(y => y.IsGenericType && y.GetGenericTypeDefinition() == typeof(ICommitedDomainEventHandler<>)))
+            //    .ToList();
         }
 
 
@@ -85,7 +102,8 @@ namespace InterviewMe.SharedKernel
             {
                 if (typeof(IDomainEventHandler<T>).IsAssignableFrom(handler))
                 {
-                    IDomainEventHandler<T> instance = (IDomainEventHandler<T>)Activator.CreateInstance(handler);
+                    IDomainEventHandler<T> instance = (IDomainEventHandler<T>)_serviceProvider.GetService(handler);
+                    //IDomainEventHandler<T> instance = (IDomainEventHandler<T>)Activator.CreateInstance(handler);
                     instance.Handle(domainEvent);
                 }
             }

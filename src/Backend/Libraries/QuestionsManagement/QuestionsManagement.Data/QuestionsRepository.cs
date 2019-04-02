@@ -1,9 +1,7 @@
 ﻿using QuestionsManagement.Core.Interfaces;
 using QuestionsManagement.Core.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace QuestionsManagement.Data
 {

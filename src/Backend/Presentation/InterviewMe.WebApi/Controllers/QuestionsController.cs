@@ -3,8 +3,8 @@ using InterviewMe.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using QuestionsManagement.Core.Interfaces;
 using QuestionsManagement.Core.Model;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace InterviewMe.WebApi.Controllers
 {
@@ -51,14 +51,14 @@ namespace InterviewMe.WebApi.Controllers
             {
                 Question.CreateQuestion(questionModel.Title, questionModel.BodyText);
             }
-            catch
+            catch(Exception ex)
             {
-
+                return BadRequest();
             }
 
-            return BadRequest();
+            return Ok();
         }
 
-       
+
     }
 }

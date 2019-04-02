@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.Data.EfMigrationContext
+﻿namespace InterviewMe.SharedKernel
 {
     public abstract class Entity<TId>
     {

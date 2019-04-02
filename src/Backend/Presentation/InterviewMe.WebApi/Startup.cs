@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Infrastructure.Data.EfMigrationContext;
+﻿using Infrastructure.Data.EfMigrationContext;
+using InterviewMe.SharedKernel;
+using InterviewMe.SharedKernel.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using QuestionsManagement.Core.Interfaces;
+using QuestionsManagement.Core.Services;
+using QuestionsManagement.Data;
+using System;
 
 namespace InterviewMe.WebApi
 {
@@ -28,12 +27,22 @@ namespace InterviewMe.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddCors();
 
             services.AddEntityFrameworkSqlServer()
                .AddDbContext<InterviewMeContext>(options =>
                                options.UseSqlServer(Configuration.GetConnectionString("InterviewMeConnection")));
 
             services.AddScoped<DbContext, InterviewMeContext>();
+            services.AddSingleton<DomainEvents>();
+
+            services.AddTransient<IQuestionsRepository, QuestionsRepository>();
+            services.AddEntityFrameworkSqlServer()
+             .AddDbContext<QuestionsContext>(options =>
+                             options.UseSqlServer(Configuration.GetConnectionString("InterviewMeConnection")));
+            services.AddTransient<QuestionCreatedHandler>();
+
+            ContainerManager.Container =services.BuildServiceProvider();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +57,9 @@ namespace InterviewMe.WebApi
                 app.UseHsts();
             }
 
+            app.UseCors(options =>
+              options.WithOrigins("*").WithHeaders("*"));
+
             app.UseHttpsRedirection();
 
             AutoMapper.Mapper.Initialize(cfg =>
@@ -55,10 +67,12 @@ namespace InterviewMe.WebApi
                 cfg.CreateMap<QuestionsManagement.Core.Model.Question, Models.QuestionModel>();
             });
 
+
             app.UseMvc(config =>
             {
                 config.MapRoute("MainAPIRoute", "api/{controller}/{action}");
             });
+
         }
     }
 }

@@ -13,4 +13,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\SharedKernel\InterviewMe.SharedKernel\InterviewMe.SharedKernel.csproj" />
+  </ItemGroup>
+
 </Project>

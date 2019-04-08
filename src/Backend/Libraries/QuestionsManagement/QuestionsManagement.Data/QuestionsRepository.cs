@@ -24,5 +24,12 @@ namespace QuestionsManagement.Data
         {
             return _questionsContext.Questions.ToList();
         }
+
+        public IEnumerable<Question> GetQuestionsByTag(string tag)
+        {
+            return _questionsContext.Questions
+                                    .Where(question => question.Tags.Contains(tag))
+                                    .ToList();
+        }
     }
 }

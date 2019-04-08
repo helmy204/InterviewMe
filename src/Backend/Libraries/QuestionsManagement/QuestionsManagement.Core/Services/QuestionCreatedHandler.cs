@@ -10,7 +10,6 @@ namespace QuestionsManagement.Core.Services
 
         public QuestionCreatedHandler(IQuestionsRepository questionsRepository)
         {
-
             _questionsRepository = questionsRepository;
         }
 

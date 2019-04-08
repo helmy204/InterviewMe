@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace InterviewMe.WebApi.Models
+﻿namespace InterviewMe.WebApi.Models
 {
     public class QuestionModel
     {
-        public string Title { get;  set; }
-        public string BodyText { get;  set; }
+        public string Title { get; set; }
+        public string Body { get; set; }
+        public string Tags { get; set; }
     }
 }

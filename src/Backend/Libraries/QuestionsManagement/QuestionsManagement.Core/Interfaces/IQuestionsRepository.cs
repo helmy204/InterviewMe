@@ -7,5 +7,6 @@ namespace QuestionsManagement.Core.Interfaces
     {
         void InsertQuestion(Question question);
         IEnumerable<Question> GetQuestions();
+        IEnumerable<Question> GetQuestionsByTag(string tag);
     }
 }

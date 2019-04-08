@@ -22,36 +22,34 @@ namespace InterviewMe.WebApi.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var questions = _questionsRepository.GetQuestions();
-            var result = Mapper.Map<IEnumerable<QuestionModel>>(questions);
+            IEnumerable<Question> questions = _questionsRepository.GetQuestions();
+            IEnumerable<QuestionModel> result = Mapper.Map<IEnumerable<QuestionModel>>(questions);
             return Ok(result);
         }
 
-        //[HttpGet("{id}")]
-        //public IActionResult Get(long id)
-        //{
-        //    try
-        //    {
-        //        Patient patient = _patientRepository.GetById(id);
-        //        if (patient == null) return NotFound($"Patient {id} was not found");
-        //        PatientModel patientModel = patient.ToModel();
-        //        return Ok(patientModel);
-        //    }
-        //    catch
-        //    {
-        //    }
-
-        //    return BadRequest();
-        //}
+        [HttpGet("{tag}")]
+        public IActionResult Get(string tag)
+        {
+            try
+            {
+                IEnumerable<Question> questions = _questionsRepository.GetQuestionsByTag(tag);
+                IEnumerable<QuestionModel> result = Mapper.Map<IEnumerable<QuestionModel>>(questions);
+                return Ok(result);
+            }
+            catch
+            {
+            }
+            return BadRequest();
+        }
 
         [HttpPost]
         public IActionResult Post([FromBody]QuestionModel questionModel)
         {
             try
             {
-                Question.CreateQuestion(questionModel.Title, questionModel.BodyText);
+                Question.CreateQuestion(questionModel.Title, questionModel.Body, questionModel.Tags);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest();
             }

@@ -68,10 +68,11 @@ namespace InterviewMe.WebApi
             });
 
 
-            app.UseMvc(config =>
-            {
-                config.MapRoute("MainAPIRoute", "api/{controller}/{action}");
-            });
+            //app.UseMvc(config =>
+            //{
+            //    config.MapRoute("MainAPIRoute", "api/{controller}/{action}");
+            //});
+            app.UseMvc();
 
         }
     }
